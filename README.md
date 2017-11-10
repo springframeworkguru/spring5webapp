@@ -1,5 +1,9 @@
-This repository is for an example application built in my Spring Framework 5 - Beginner to Guru
+#Spring Framework 5: Beginner to Guru
+
+This repository is for an example application built in my [Spring Framework 5 - Beginner to Guru](https://courses.springframework.guru/p/spring-framework-5-begginer-to-guru) online course
 
 The application is a simple Spring Boot 2 / Spring Framework 5 web application.
 
-You can learn about my Spring Framework 5 Online course [here.](https://go.springframework.guru/spring-framework-5-online-course)
+If you would like learn about what's new in Spring Framework 5, click [here](https://springframework.guru/what-is-new-with-spring-framework-5/)
+
+You can learn about my Spring Framework 5 Online course [here.](https://courses.springframework.guru/p/spring-framework-5-begginer-to-guru)
