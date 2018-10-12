@@ -12,8 +12,14 @@ public class Spring5webappApplicationTests {
 	@Test
 	public void contextLoads() {
 	}
-
+@Test
+	public void contextLoads22() {
+	}
 	@Test
 	public void contextLoads2() {
+	}
+
+	@Test
+	public void contextLoads222() {
 	}
 }
