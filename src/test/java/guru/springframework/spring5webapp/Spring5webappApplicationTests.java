@@ -13,7 +13,7 @@ public class Spring5webappApplicationTests {
 	public void contextLoads() {
 	}
 @Test
-	public void contextLoads22() {
+	public void contextLoads2212312() {
 	}
 	@Test
 	public void contextLoads2() {
