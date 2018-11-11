@@ -4,10 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Objects;
 
-/**
- * Created by jt on 5/17/17.
- */
 @Entity
 public class Publisher {
 
@@ -16,6 +14,15 @@ public class Publisher {
     private Long id;
     private String name;
     private String address;
+
+    public Publisher(){}
+
+
+
+    public Publisher(String name, String address) {
+        this.name = name;
+        this.address = address;
+    }
 
     public Long getId() {
         return id;
