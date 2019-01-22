@@ -8,8 +8,6 @@ If you would like learn about what's new in Spring Framework 5, click [here](htt
 
 You can learn about my Spring Framework 5 Online course [here.](https://www.udemy.com/testing-spring-boot-beginner-to-guru/?couponCode=GITHUB_REPO)
 
-You can learn about my Spring Framework 5 Online course [here.](https://courses.springframework.guru/p/spring-framework-5-begginer-to-guru)
-
 # Spring Framework 5: Beginner to Guru Course FAQs
 
 Check out this [page](https://github.com/springframeworkguru/spring5webapp/wiki) for answers to frequently asked questions! 
