@@ -3,6 +3,7 @@ package guru.springframework.spring5webapp;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+
 @Entity
 public class Book {
 
