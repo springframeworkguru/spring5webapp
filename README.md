@@ -25,7 +25,7 @@ Got a question about your Spring Framework 5 course? [Checkout these FAQs!](http
 
 ## All Spring Framework Guru Courses
 ### Spring Framework 5
-* [Spring Framework 5: Beginner to Guru](https://www.udemy.com/testing-spring-boot-beginner-to-guru/?couponCode=GITHUB_REPO) - Get the most modern and comprehensive course available for the Spring Framework! Join over 4,100 over Guru's in an Slack community exclusive to this course! More than 2,700 students have given this 50.5 hour course a 5 star review!
+* [Spring Framework 5: Beginner to Guru](https://www.udemy.com/course/spring-framework-5-beginner-to-guru) - Get the most modern and comprehensive course available for the Spring Framework! Join over 4,100 over Guru's in an Slack community exclusive to this course! More than 2,700 students have given this 50.5 hour course a 5 star review!
 * [Reactive Programming with Spring Framework 5](https://www.udemy.com/reactive-programming-with-spring-framework-5/?couponCode=GITHUB_REPO_SF5B2G) - Keep your skills razor sharp and take a deep dive into Reactive Programming!
 * [Testing Spring Boot: Beginner to Guru](https://www.udemy.com/testing-spring-boot-beginner-to-guru/?couponCode=GITHUB_REPO_SF5B2G) - Become an expert in testing Java and Spring Applications with JUnit 5, Mockito and much more!
 
