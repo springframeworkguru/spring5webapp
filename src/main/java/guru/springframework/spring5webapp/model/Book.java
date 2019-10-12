@@ -33,11 +33,16 @@ public class Book {
                 '}';
     }
 
-    public Book() {
+
+    public Set<Author> getAuthors() {
+        return authors;
     }
 
-    public Book(Long id, String title, String isbn, String publisher) {
-        this.id = id;
+    public void setAuthors(Set<Author> authors) {
+        this.authors = authors;
+    }
+
+    public Book(String title, String isbn, String publisher) {
         this.title = title;
         this.isbn = isbn;
         this.publisher = publisher;

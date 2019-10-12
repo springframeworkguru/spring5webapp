@@ -22,8 +22,15 @@ public class Author {
     public Author() {
     }
 
-    public Author(Long id, String firstName, String lastName) {
-        this.id = id;
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
+
+    public Author(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
