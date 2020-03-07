@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * Created by jt on 12/23/19.
+ * Modified by ŁS on 3/7/20
  */
 @Component
 public class BootStrapData implements CommandLineRunner {
@@ -37,24 +38,30 @@ public class BootStrapData implements CommandLineRunner {
 
         publisherRepository.save(publisher);
 
-        System.out.println("Publisher Count: " + publisherRepository.count());
-
         Author eric = new Author("Eric", "Evans");
         Book ddd = new Book("Domain Driven Design", "123123");
         eric.getBooks().add(ddd);
         ddd.getAuthors().add(eric);
+        ddd.setPublisher(publisher);
+        publisher.getBooks().add(ddd);
 
         authorRepository.save(eric);
         bookRepository.save(ddd);
+        publisherRepository.save(publisher);
 
         Author rod = new Author("Rod", "Johnson");
         Book noEJB = new Book("J2EE Development without EJB", "3939459459");
         rod.getBooks().add(noEJB);
         noEJB.getAuthors().add(rod);
+        publisher.getBooks().add(noEJB);
+        noEJB.setPublisher(publisher);
 
         authorRepository.save(rod);
         bookRepository.save(noEJB);
+        publisherRepository.save(publisher);
 
         System.out.println("Number of Books: " + bookRepository.count());
+        System.out.println("Publisher Count: " + publisherRepository.count());
+        System.out.println("Number of publisher books: " + publisher.getBooks().size());
     }
 }
