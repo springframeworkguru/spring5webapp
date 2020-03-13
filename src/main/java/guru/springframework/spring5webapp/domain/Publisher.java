@@ -29,6 +29,9 @@ public class Publisher {
         this.country = country;
     }
 
+    public Publisher() {
+    }
+
     public Set<Book> getBooks() {
         return books;
     }
