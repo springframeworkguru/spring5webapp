@@ -10,13 +10,13 @@
 <table>
     <tr>
         <th>ID</th>
-        <th>Title</th>
-        <th>Publisher</th>
+        <th>Name</th>
+        <th>Surname</th>
     </tr>
-    <tr th:each="book : ${books}">
-        <td th:text=${book.id}"></td>
-        <td th:text=${book.title}"></td>
-        <td th:text=${book.publisher.street}"></td>
+    <tr th:each="author : ${authors}">
+        <td th:text="${author.id}"></td>
+        <td th:text="${author.name}"></td>
+        <td th:text="${author.lastName}"></td>
     </tr>
 </table>
 
