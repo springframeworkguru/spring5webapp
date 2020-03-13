@@ -1,20 +1,24 @@
 package guru.springframework.spring5webapp.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Publisher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     private String street;
     private Integer houseNumber;
     private Integer flatNumber;
     private String postcode;
+    private String town;
+    private String country;
+    @OneToMany
+    @JoinColumn(name = "publisher_id")
+    private Set<Book> books = new HashSet<>();
 
     public Publisher(String street, Integer houseNumber, Integer flatNumber, String postcode, String town, String country) {
         this.street = street;
@@ -25,14 +29,19 @@ public class Publisher {
         this.country = country;
     }
 
-    private String town;
-    private String country;
+    public Set<Book> getBooks() {
+        return books;
+    }
 
-    public long getId() {
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -104,11 +113,11 @@ public class Publisher {
 
         Publisher publisher = (Publisher) o;
 
-        return id == publisher.id;
+        return id != null ? id.equals(publisher.id) : publisher.id == null;
     }
 
     @Override
     public int hashCode() {
-        return (int) (id ^ (id >>> 32));
+        return id != null ? id.hashCode() : 0;
     }
 }

@@ -9,8 +9,6 @@ import guru.springframework.spring5webapp.repositories.PublisherRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.UUID;
 
 @Component
@@ -41,23 +39,26 @@ public class BootstrapData implements CommandLineRunner {
                 "ABC123",
                 "Code Town",
                 "Code Country");
+        publisherRepository.save(publisher);
+        authorRepository.save(author1);
+        authorRepository.save(author2);
+        bookRepository.save(book1);
+        bookRepository.save(book2);
 
         author1.getBooks().add(book1);
         book1.getAuthors().add(author1);
+        book1.setPublisher(publisher);
+        publisher.getBooks().add(book1);
 
         author2.getBooks().add(book2);
         book2.getAuthors().add(author2);
-
-        authorRepository.save(author1);
-        authorRepository.save(author2);
-
-        bookRepository.save(book1);
-        bookRepository.save(book2);
-        publisherRepository.save(publisher);
+        book2.setPublisher(publisher);
+        publisher.getBooks().add(book2);
 
         System.out.println("Number of saved books -> " + bookRepository.count());
         System.out.println("Number of saved authors -> " + authorRepository.count());
         System.out.println("Number of saved publishers -> " + publisherRepository.count());
+        System.out.println("Number of books saved to a publisher -> " + publisher.getBooks().size());
         System.out.println("Details of a created publisher -> " + publisher.toString());
     }
 }
