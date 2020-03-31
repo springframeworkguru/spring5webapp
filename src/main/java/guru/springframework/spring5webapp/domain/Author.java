@@ -5,31 +5,34 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Author{
-    private String firstName;
-    private String lastName;
-
-    @ManyToMany(mappedBy = "authors")
-    private Set<Book> books=new HashSet<>();
+public class Author {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    //Constructors
+    private String firstName;
+    private String lastName;
+
+    @ManyToMany(mappedBy = "authors")
+    private Set<Book> books = new HashSet<>();
 
     public Author() {
     }
 
-    public Author(String firstName, String lastName)
-    {
-        this.firstName=firstName;
-        this.lastName=lastName;
-
+    public Author(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
+    public Long getId() {
+        return id;
+    }
 
-    //Getters and setters
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -54,12 +57,14 @@ public class Author{
         this.books = books;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    @Override
+    public String toString() {
+        return "Author{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", books=" + books +
+                '}';
     }
 
     @Override
@@ -69,22 +74,11 @@ public class Author{
 
         Author author = (Author) o;
 
-        if (firstName != null ? !firstName.equals(author.firstName) : author.firstName != null) return false;
-        if (lastName != null ? !lastName.equals(author.lastName) : author.lastName != null) return false;
-        if (books != null ? !books.equals(author.books) : author.books != null) return false;
         return id != null ? id.equals(author.id) : author.id == null;
     }
 
-
-
-
     @Override
-    public String toString() {
-        return "Author{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", books=" + books +
-                ", id=" + id +
-                '}';
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 }

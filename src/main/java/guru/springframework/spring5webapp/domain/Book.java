@@ -2,52 +2,49 @@ package guru.springframework.spring5webapp.domain;
 
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Book{
+public class Book {
 
     @Id
-    @GeneratedValue
-    private long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-    private String isbn;
     private String title;
+    private String isbn;
 
-
-    //Many to many mapping based on the id
+    @ManyToOne
+    private Publisher publisher;
 
     @ManyToMany
-    @JoinTable(name = "author_book",joinColumns = @JoinColumn(name = "book_id"),inverseJoinColumns = @JoinColumn(name = "author_id"))
+    @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors = new HashSet<>();
 
-    public Book() {         //for entity class we need to have an empty constructor
-    }
-    public Book(String title,String isbn)
-    {
-        this.isbn=isbn;
-        this.title=title;
+    public Book() {
     }
 
+    public Book(String title, String isbn) {
+        this.title = title;
+        this.isbn = isbn;
+    }
 
-    //Getters and Setters
+    public Publisher getPublisher() {
+        return publisher;
+    }
 
-    public long getId() {
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
     }
 
     public String getTitle() {
@@ -56,6 +53,14 @@ public class Book{
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     public Set<Author> getAuthors() {
@@ -67,26 +72,27 @@ public class Book{
     }
 
     @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", authors=" + authors +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         Book book = (Book) o;
 
-        if (id != book.id) return false;
-        if (isbn != null ? !isbn.equals(book.isbn) : book.isbn != null) return false;
-        if (title != null ? !title.equals(book.title) : book.title != null) return false;
-        return authors != null ? authors.equals(book.authors) : book.authors == null;
+        return id != null ? id.equals(book.id) : book.id == null;
     }
 
-
     @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", isbn='" + isbn + '\'' +
-                ", title='" + title + '\'' +
-                ", authors=" + authors +
-                '}';
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 }
