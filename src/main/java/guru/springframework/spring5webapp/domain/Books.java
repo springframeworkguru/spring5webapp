@@ -6,14 +6,14 @@ import java.util.Set;
 @Entity
 public class Books {
     @Id
-    @GeneratedValue(strategy = GeneratedValue.AUTO)
+    @GeneratedValue(strategy =  GenerationType.AUTO)
     private Long id;
 
     private String title;
     private String isbn;
 
     @ManyToMany
-    @JoinTable(name = "author_books", joinColumns = @JoinColumns(name = "books_id"),
+    @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "books_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors;
 
