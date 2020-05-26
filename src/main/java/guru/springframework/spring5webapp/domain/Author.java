@@ -22,8 +22,6 @@ public class Author {
 	@ManyToMany(mappedBy = "authors")
 	private Set<Book> books = new HashSet<>();
 	
-	//para ver si sube
-	
 	public Author() {
 	}
 
@@ -33,8 +31,6 @@ public class Author {
 		this.lastName = lastName;
 	}
 
-	
-	
 	public Long getId() {
 		return id;
 	}
@@ -73,7 +69,6 @@ public class Author {
 				"id=" + id + 
 				", firsName'" + firsName + '\'' + 
 				", lastName'" + lastName + '\'' + 
-				", books" + books + 
 				')';
 	}
 
