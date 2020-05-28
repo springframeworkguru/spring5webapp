@@ -9,20 +9,20 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String author;
+    private String title;
     private String isbn;
 
     @ManyToMany
     @JoinTable(name = "author_book",
-    joinColumns = @JoinColumn(name = "book_id"),
-    inverseJoinColumns = @JoinColumn(name = "author_id"))
+        joinColumns = @JoinColumn(name = "book_id"),
+        inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors;
 
     public Book() {
     }
 
-    public Book(String author, String isbn, Set<Author> authors) {
-        this.author = author;
+    public Book(String title, String isbn, Set<Author> authors) {
+        this.title = title;
         this.isbn = isbn;
         this.authors = authors;
     }
@@ -35,12 +35,12 @@ public class Book {
         this.id = id;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getTitle() {
+        return title;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getIsbn() {
