@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 
 
@@ -20,6 +21,10 @@ public class Book {
 	
 	private String title;
 	private String isbn;
+	
+	@ManyToOne
+	private Publisher publisher;
+	
 	@ManyToMany
 	@JoinTable(name= "author_book", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn (name = "author_id"))
 	private Set<Author> authors = new HashSet<>();
@@ -30,6 +35,36 @@ public class Book {
 		this.title = title;
 		this.isbn = isbn;
 	}
+
+	
+	
+
+	public Long getId() {
+		return id;
+	}
+
+
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	
+
+
+	public Publisher getPublisher() {
+		return publisher;
+	}
+
+
+
+
+	public void setPublisher(Publisher publisher) {
+		this.publisher = publisher;
+	}
+
+
 
 
 	public String getTitle() {
@@ -65,7 +100,7 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return "Book [id=" + id + ", title=" + title + ", isbn=" + isbn + ", authors=" + authors + "]";
+		return "Book [id=" + id + ", title=" + title + ", isbn=" + isbn + "]";
 	}
 
 
