@@ -1,0 +1,37 @@
+- On <17>
+Steps:
+
+Authors *_* Books
+-> ManyToMany relationship
+Authors
+- firstN
+- lastN
+- id
+- Books
+
+Books
+- title
+- isbn
+- Authors
+- id
+
+- Gen the project
+- Create pojo ->then to -> entities
+- Now on to relationships => POJO -> Entity and id generation stra -> Then relationship
+- Authors manyToMany on Set<Books> with mappedBy = authors -> in books pojo
+- AND, in books pojo, JOINTABLE!!           # This was taken from his source
+    - Join table is configuraed as we need to maintian the relationship
+- Now, impl the hashCode and equals methods -> for jpa, and as well impl the toString()
+
+- Now, Repository -> Spring dataJpa
+    - create interface - impl crudRepo
+    - Spring is going to provide the impl for the repo class.
+
+- Now, commandLine runner
+    - myClass will implement the commandLineRunner
+    - And @Component -> Tell spring it is a spring managed component
+    - AuthorRepo, and BookRepo are IN CONSTRUCTOR??? -> SPring will inject the beans ITSELF, even without autoWired
+    - Did a add on the author and book, and then did a repo.count() to get count of data from h2
+
+- Assign - Add publisher
+    - Nothing fancy, just add a pojo - entity it - and save to repo with a runner
