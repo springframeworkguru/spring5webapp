@@ -17,7 +17,7 @@ Books
 
 - Gen the project
 - Create pojo ->then to -> entities
-- Now on to relationships => POJO -> Entity and id generation stra -> Then relationship
+- Now on to relationships => POJO -> Entity and id generation stra -> Hibernate -> Then relationship
 - Authors manyToMany on Set<Books> with mappedBy = authors -> in books pojo
 - AND, in books pojo, JOINTABLE!!           # This was taken from his source
     - Join table is configuraed as we need to maintian the relationship
@@ -35,3 +35,23 @@ Books
 
 - Assign - Add publisher
     - Nothing fancy, just add a pojo - entity it - and save to repo with a runner
+
+- Now, to add relationship to publisher
+    - Book *_* Author   (Many to many)
+    - Book *_ Publisher (Many to one)
+    - Marked publisher set<Book> with OneToMany
+    - Book publisher - manyToOne
+    - Also, added hint in publisher <Set<Book>> joinCOlumn??
+        - Maybe - jpa hint - on books row - we need to maintain a publisher id column
+    - ISSUE - Save transient state of book
+        - single publisher save to repo wiht books set in its pojo, and in book, the same publisher added
+        - Issue was publisher as a child, it needed to be added to the db first, the a ref of it can be assigned to the book row.
+        - So create a publisher no books set, add to the db - done.
+        - Then set books, assig the ref od publisher to books
+        - Then repo save on book, then publisher.
+
+- H2 console
+    - By def, it wont show in chrome
+    - 8080 - spring.h2.console.enabled=true in app.props
+    - http://localhost:8080/h2-console
+    - connection url is - jdbc:h2:mem:testdb - user sa - pwd - <blank>
