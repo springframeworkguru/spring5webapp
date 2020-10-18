@@ -31,8 +31,10 @@ public class Book {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Book book = (Book) o;
-        return id.equals(book.id);
+
+        return id != null ? id.equals(book.id) : book.id == null;
     }
 
     @Override
