@@ -11,6 +11,7 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     private String firstName;
     private String lastName;
 
@@ -68,13 +69,16 @@ public class Author {
         this.id = id;
     }
 
+    public long getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
         return "Author{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", books=" + books +
                 '}';
     }
 }
