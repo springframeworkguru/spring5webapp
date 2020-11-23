@@ -13,6 +13,9 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    private String title;
+    private String isbn;
+
     public long getId() {
         return id;
     }
@@ -45,16 +48,22 @@ public class Book {
         this.authors = authors;
     }
 
-    private String title;
-    private String isbn;
+    @ManyToOne
+    @JoinColumn(name = "publisher_id")
+    private Publisher publisher;
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
 
     @ManyToMany
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors = new HashSet<>();
-
-//    public Book(String the_grapes_of_wrath, String s) {
-//    }
 
     public Book() {
 
@@ -85,11 +94,7 @@ public class Book {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", isbn='" + isbn + '\'' +
-                ", authors=" + authors +
                 '}';
     }
 
-//    public Collection<Author> getAuthors() {
-//        return getAuthors();
-//    }
 }
