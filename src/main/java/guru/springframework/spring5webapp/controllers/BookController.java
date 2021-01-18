@@ -8,6 +8,7 @@ import guru.springframework.spring5webapp.repositories.BookRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @Controller // Spring MVC controller
 public class BookController {
@@ -25,6 +26,6 @@ public class BookController {
         // the getBooks() method which provides a Model object
         model.addAttribute("books", bookRepository.findAll()); // Returns a list of books from the database
 
-        return "books";
+        return "books/list";
     }
 }
