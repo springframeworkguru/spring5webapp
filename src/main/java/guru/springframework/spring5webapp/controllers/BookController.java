@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import guru.springframework.spring5webapp.repositories.BookRepository;
 
 @Controller
-public class BooksController {
+public class BookController {
 
 	private BookRepository repo;
 	
 	
 	
-	public BooksController(BookRepository repo) {
+	public BookController(BookRepository repo) {
 		this.repo = repo;
 	}
 
