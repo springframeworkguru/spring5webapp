@@ -23,7 +23,7 @@ public class BookController {
 	{
 		model.addAttribute("books", repo.findAll());
 		
-		return "books";
+		return "books/list";
 	}
 	
 	
