@@ -3,6 +3,7 @@ package guru.springframework.spring5webapp.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -19,7 +20,12 @@ public class Author {
     @ManyToMany(mappedBy = "authors")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    private Set<Book> books;
+    private Set<Book> books = new HashSet<>();
+
+    public Author(String lastName, String firstName) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+    }
 
     @Override
     public boolean equals(Object o) {
