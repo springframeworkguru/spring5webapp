@@ -23,7 +23,7 @@ public class BootStrapData implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
 
         Author eric = new Author("Eric", "Evans");
         Book book = new Book("Domain driver design", "12314");
