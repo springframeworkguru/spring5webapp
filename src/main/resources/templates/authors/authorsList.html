@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1> Authors list </h1>
+<table>
+    <tr>
+        <th>id</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Books</th>
+    </tr>
+    <tr th:each="author : ${authors}">
+        <td th:text="${author.id}">123</td>
+        <td th:text="${author.firstName}">wokr in action</td>
+        <td th:text="${author.lastName}">wrox</td>
+        <td>
+            <table>
+                <tr th:each="book : ${author.books}">
+                    <p th:text="${book.title}">books</p>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
