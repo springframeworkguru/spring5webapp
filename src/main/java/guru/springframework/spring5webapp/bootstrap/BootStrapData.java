@@ -33,8 +33,15 @@ public class BootStrapData implements CommandLineRunner {
 		Book theStranger = new Book("L'étranger", "9781587240324");
 		Publisher folio = new Publisher("Folio", "5 rue Caston-Gallimard", "Paris", "France", "75328");
 
+		authorRepository.save(albertCamus);
+		bookRepository.save(theStranger);
+		publisherRepository.save(folio);
+
 		albertCamus.getBooks().add(theStranger);
 		theStranger.getAuthors().add(albertCamus);
+
+		theStranger.setPublisher(folio);
+		folio.getBooks().add(theStranger);
 
 		authorRepository.save(albertCamus);
 		bookRepository.save(theStranger);
@@ -42,6 +49,7 @@ public class BootStrapData implements CommandLineRunner {
 
 		System.out.println("Number of Books: " + bookRepository.count());
 		System.out.println("The number of publisher is: " + publisherRepository.count());
+		System.out.println("Number of book from Folio: " + folio.getBooks().size());
 	}
 
 }
