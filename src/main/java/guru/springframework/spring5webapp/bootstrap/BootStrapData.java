@@ -32,13 +32,19 @@ public class BootStrapData implements CommandLineRunner{
     public void run(String... args) throws Exception {
         
         Publisher pub1 = new Publisher("Editorial 1", "Madrid");
+        publisherRepository.save(pub1);
+
         Author eric = new Author("Eric", "Evans");
-        Book ddd = new Book("Domain Driver Desing", "12121212");
+        Book ddd = new Book("Domain Driver Design", "12121212");
         
-        eric.getBooks().add(ddd);        
+        eric.getBooks().add(ddd);
         ddd.getAuthors().add(eric);
         ddd.setPublisher(pub1);
+
+        authorRepository.save(eric);
+        bookRepository.save(ddd);
         pub1.getBooks().add(ddd);
+        publisherRepository.save(pub1);
         
         Author rod = new Author("Rod", "Johnson");
         Book noEJB = new Book("J2EE Dev without EJB", "99887766");
@@ -48,13 +54,25 @@ public class BootStrapData implements CommandLineRunner{
         noEJB.setPublisher(pub1);
         pub1.getBooks().add(noEJB);
 
-        authorRepository.save(eric);
-        bookRepository.save(ddd);
+        authorRepository.save(rod);
+        bookRepository.save(noEJB);
         publisherRepository.save(pub1);
                 
         System.out.println("Number of Books:" + bookRepository.count());
         System.out.println("Number of Authors:" + authorRepository.count());
         System.out.println("Number of Publishers:" + publisherRepository.count());
+
+        for (Book book:bookRepository.findAll())
+            System.out.println("*B* " + book.getTitle());
+
+        for (Author author:authorRepository.findAll())
+            System.out.println("*A* " + author.getFirstName());
+
+        for (Publisher publisher:publisherRepository.findAll())
+            System.out.println("*P* " + publisher.getName());
+
+               
     }
+
    
 }

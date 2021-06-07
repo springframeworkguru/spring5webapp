@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Example Spring Templates</title>
+    </head>
+    <body>
+        <h1>Author List</h1>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Surname</th>
+            </tr>
+            <tr th:each="autor: ${authors}">
+                <td th:text="${autor.id}"></td>
+                <td th:text="${autor.firstName}"></td>
+                <td th:text="${autor.lastName}"></td>
+            </tr>
+        </table>
+    </body>
+</html>
