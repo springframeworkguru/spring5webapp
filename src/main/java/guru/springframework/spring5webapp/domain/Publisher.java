@@ -31,7 +31,7 @@ public class Publisher {
         this.zipCode = zipCode;
     }
 
-    @javax.persistence.Id
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
         return Id;
