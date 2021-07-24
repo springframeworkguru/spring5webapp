@@ -1,24 +1,25 @@
 package guru.springframework.spring5webapp.domain;
 
 import javax.persistence.*;
-import javax.persistence.GenerationType;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Publisher {
 
     @Id
-    @GeneratedValue()
-    private Long Id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     private String name;
-
     private String addressLine1;
-
     private String city;
-
     private String state;
-
     private String zipCode;
+
+    @OneToMany
+    @JoinColumn(name = "publisher_id")
+    private Set<Book> books = new HashSet<>();
 
     public Publisher() {
     }
@@ -31,14 +32,12 @@ public class Publisher {
         this.zipCode = zipCode;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {
@@ -81,10 +80,18 @@ public class Publisher {
         this.zipCode = zipCode;
     }
 
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
+
     @Override
     public String toString() {
         return "Publisher{" +
-                "Id=" + Id +
+                "Id=" + id +
                 ", name='" + name + '\'' +
                 ", addressLine1='" + addressLine1 + '\'' +
                 ", city='" + city + '\'' +
@@ -100,11 +107,11 @@ public class Publisher {
 
         Publisher publisher = (Publisher) o;
 
-        return Id != null ? Id.equals(publisher.Id) : publisher.Id == null;
+        return id != null ? id.equals(publisher.id) : publisher.id == null;
     }
 
     @Override
     public int hashCode() {
-        return Id != null ? Id.hashCode() : 0;
+        return id != null ? id.hashCode() : 0;
     }
 }
