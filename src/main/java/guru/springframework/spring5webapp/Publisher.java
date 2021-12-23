@@ -9,8 +9,12 @@ public class Publisher {
 
     private String name;
     private String city;
+    private String state;
+    private String adress;
+    private Long zip;
 
-    @OneToMany(mappedBy = "publisher")
+    @OneToMany()
+    @JoinColumn(name="publisher_id")
     private Set<Book> books = new HashSet<>();
 
 
@@ -18,15 +22,49 @@ public class Publisher {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    public Publisher(String name, String city, Set<Book> books) {
+
+    public Publisher() {
+    }
+
+    public Publisher(String name, String city, String state, String adress, Long zip) {
         this.name = name;
         this.city = city;
+        this.state = state;
+        this.adress = adress;
+        this.zip = zip;
+    }
+
+    public Publisher(String name, String city, String state, String adress, Long zip, Set<Book> books) {
+        this.name = name;
+        this.city = city;
+        this.state = state;
+        this.adress = adress;
+        this.zip = zip;
         this.books = books;
     }
 
-    public Publisher(String name, String city) {
-        this.name = name;
-        this.city = city;
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
+    public Long getZip() {
+        return zip;
+    }
+
+    public void setZip(Long zip) {
+        this.zip = zip;
     }
 
     public String getName() {
@@ -61,8 +99,7 @@ public class Publisher {
         this.id = id;
     }
 
-    public Publisher() {
-    }
+
 
     @Override
     public boolean equals(Object o) {
