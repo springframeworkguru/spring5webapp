@@ -16,6 +16,9 @@ public class Publisher {
     private String namePublisher;
     @OneToMany(fetch = FetchType.EAGER)
     private Set<Address> address = new HashSet<>();
+    @OneToMany
+    @JoinColumn(name = "publisher_id")
+    private Set<Book> books = new HashSet<>();
 
     public Publisher() {
 
@@ -39,6 +42,14 @@ public class Publisher {
 
     public void setNamePublisher(String namePublisher) {
         this.namePublisher = namePublisher;
+    }
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 
     public Set<Address> getAddress() {

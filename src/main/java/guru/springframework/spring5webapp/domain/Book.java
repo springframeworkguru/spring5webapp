@@ -3,6 +3,7 @@ package guru.springframework.spring5webapp.domain;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+
 /**
  * @author igorg
  * @Date 09.04.2022
@@ -15,6 +16,9 @@ public class Book {
     private Long id;
     private String title;
     private String isbn;
+
+    @ManyToOne
+    private Publisher publisher;
     @ManyToMany
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
@@ -56,6 +60,14 @@ public class Book {
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
     }
 
     public Set<Author> getAuthors() {
