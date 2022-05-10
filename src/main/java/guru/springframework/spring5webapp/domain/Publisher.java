@@ -29,6 +29,7 @@ public class Publisher {
         this.city = city;
         this.state = state;
         this.zip = zip;
+        // this.books = books;
     }
 
     public Long getId() {

@@ -9,10 +9,6 @@ import guru.springframework.spring5webapp.repositories.PublisherRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-/**
- * Created by jt on 12/23/19.
- */
-@Component
 public class BootStrapData implements CommandLineRunner {
 
     private final AuthorRepository authorRepository;
