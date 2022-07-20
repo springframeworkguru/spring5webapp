@@ -7,23 +7,26 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Spring5webappApplicationTests {
+public class Spring5webappApplicationTests2 {
 
 	@Test
 	public void contextLoads() {
-		asdsad
+		asd
+		asds
 	}
-@Test
-	public void contextLoads2212312() {
-		asdasdasd
-	}
+
 	@Test
 	public void contextLoads2() {
-
-		asdasd
+		asdas
 	}
-
 	@Test
-	public void contextLoads222() {
+	public void contextLoads3() {
+
+		asd
+	}
+	@Test
+	public void contextLoads4() {
+
+		aaddasd
 	}
 }
