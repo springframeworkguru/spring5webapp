@@ -24,10 +24,12 @@ public class Book {
     public Book() {
     }
 
-    public Book(Long id, String title, String isbn) {
+    public Book(Long id, String title, String isbn, Set<Author> authors, Publisher publisher) {
         this.id = id;
         this.title = title;
         this.isbn = isbn;
+        this.authors = authors;
+        this.publisher = publisher;
     }
 
     public Long getId() {
@@ -62,6 +64,14 @@ public class Book {
         this.authors = authors;
     }
 
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -84,6 +94,7 @@ public class Book {
                 ", title='" + title + '\'' +
                 ", isbn='" + isbn + '\'' +
                 ", authors=" + authors +
+                ", publisher=" + publisher +
                 '}';
     }
 }

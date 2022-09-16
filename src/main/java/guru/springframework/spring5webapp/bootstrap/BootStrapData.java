@@ -35,10 +35,12 @@ public class BootStrapData implements CommandLineRunner {
         saahon.getBooks().add(book);
         book.getAuthors().add(saahon);
         authorRepository.save(saahon);
-        bookRepository.save(book);
 
         Publisher publisher = createPublisher(saahon);
         publisherRepository.save(publisher);
+
+        book.setPublisher(publisher);
+        bookRepository.save(book);
 
         System.out.println("Started in Bootstrap");
         System.out.println("saved books: " + bookRepository.count());
@@ -48,7 +50,7 @@ public class BootStrapData implements CommandLineRunner {
 
     private static Publisher createPublisher(Author saahon) {
         Publisher publisher = new Publisher();
-        publisher.setAddressLine1(saahon.getFirstName());
+        publisher.setName(saahon.getFirstName());
         publisher.setAddressLine1(PUBLISHER_ADDRESS);
         publisher.setCity(PUBLISHER_CITY);
         publisher.setState(PUBLISHER_STATE);
