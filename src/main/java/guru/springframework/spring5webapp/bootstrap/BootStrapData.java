@@ -1,10 +1,8 @@
 package guru.springframework.spring5webapp.bootstrap;
 
-import guru.springframework.spring5webapp.domain.Address;
 import guru.springframework.spring5webapp.domain.Author;
 import guru.springframework.spring5webapp.domain.Book;
 import guru.springframework.spring5webapp.domain.Publisher;
-import guru.springframework.spring5webapp.repositories.AddressRepository;
 import guru.springframework.spring5webapp.repositories.AuthorRepository;
 import guru.springframework.spring5webapp.repositories.BookRepository;
 import guru.springframework.spring5webapp.repositories.PublisherRepository;
@@ -22,16 +20,13 @@ public class BootStrapData implements CommandLineRunner {
     public static final String ISBN = "12345";
     private final BookRepository bookRepository;
     private final AuthorRepository authorRepository;
-    private final AddressRepository addressRepository;
     private final PublisherRepository publisherRepository;
 
-    public BootStrapData(BookRepository bookRepository, AuthorRepository authorRepository, AddressRepository addressRepository, PublisherRepository publisherRepository) {
+    public BootStrapData(BookRepository bookRepository, AuthorRepository authorRepository, PublisherRepository publisherRepository) {
         this.bookRepository = bookRepository;
         this.authorRepository = authorRepository;
-        this.addressRepository = addressRepository;
         this.publisherRepository = publisherRepository;
     }
-
     @Override
     public void run(String... args) {
         Author saahon = createAuthor();
@@ -42,35 +37,24 @@ public class BootStrapData implements CommandLineRunner {
         authorRepository.save(saahon);
         bookRepository.save(book);
 
-        Address address = createAddress();
-        addressRepository.save(address);
-
-        Publisher publisher = createPublisher(saahon, address);
+        Publisher publisher = createPublisher(saahon);
         publisherRepository.save(publisher);
 
         System.out.println("Started in Bootstrap");
         System.out.println("saved books: " + bookRepository.count());
         System.out.println("saved authors: " + authorRepository.count());
         System.out.println("saved publishers: " + publisherRepository.count());
-        System.out.println("saved addresses: " + addressRepository.count());
     }
 
-    private static Publisher createPublisher(Author saahon, Address address) {
+    private static Publisher createPublisher(Author saahon) {
         Publisher publisher = new Publisher();
-        publisher.setName(saahon.getFirstName());
-        publisher.setAddress(address);
+        publisher.setAddressLine1(saahon.getFirstName());
+        publisher.setAddressLine1(PUBLISHER_ADDRESS);
+        publisher.setCity(PUBLISHER_CITY);
+        publisher.setState(PUBLISHER_STATE);
+        publisher.setZip(PUBLISHER_ZIP_CODE);
         return publisher;
     }
-
-    private static Address createAddress() {
-        Address address = new Address();
-        address.setAddress(PUBLISHER_ADDRESS);
-        address.setCity(PUBLISHER_CITY);
-        address.setState(PUBLISHER_STATE);
-        address.setZip(PUBLISHER_ZIP_CODE);
-        return address;
-    }
-
     private static Book createBook() {
         Book book = new Book();
         book.setTitle(BOOK_NAME);
