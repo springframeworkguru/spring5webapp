@@ -1,6 +1,7 @@
 package guru.springframework.spring5webapp.domain;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,6 +17,11 @@ public class Book {
 
     private String title;
     private String isbn;
+    @Temporal(TemporalType.DATE)
+    private Date date;
+    @Transient
+    private Integer age;
+    @Column(name = "")
 
     @ManyToMany
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
