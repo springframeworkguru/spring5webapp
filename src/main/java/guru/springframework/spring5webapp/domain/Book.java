@@ -1,6 +1,5 @@
 package guru.springframework.spring5webapp.domain;
 
-import org.hibernate.mapping.Join;
 
 import javax.persistence.*;
 import java.util.Set;
