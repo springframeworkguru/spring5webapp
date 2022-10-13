@@ -3,7 +3,7 @@ package guru.springframework.spring5webapp;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+// just my remark
 class FooTest {
 
     @Test
