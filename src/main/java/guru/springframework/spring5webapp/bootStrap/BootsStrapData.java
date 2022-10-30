@@ -33,6 +33,8 @@ public class BootsStrapData implements CommandLineRunner {
         publisher.setCity ( "bbsr" );
         publisher.setName ( "n-PUBLISH" );
         publisher.setState ( "ODISHA" );
+        publisher.setZip ( "12312" );
+        publisherRepository.save ( publisher );
 
 
 
@@ -42,18 +44,18 @@ public class BootsStrapData implements CommandLineRunner {
         nannaBook.setPublisher ( publisher );
         publisher.getBooks ().add ( nannaBook );
         authorRepository.save ( nanna );
-//        bookRepository.save ( nannaBook );
+        bookRepository.save ( nannaBook );
 
-        Author rod  = new Author ("rod", "johnson");
-        Book ejb = new Book ( "J2EE", "67868234" );
-        rod.getBooks ().add ( ejb );
-        ejb.getAuthors ().add ( rod );
-//        ejb.setPublisher (  publisher);
-//        publisher.getBooks ().add ( ejb );
+                        Author rod  = new Author ("rod", "johnson");
+                        Book ejb = new Book ( "J2EE", "67868234" );
+                        rod.getBooks ().add ( ejb );
+                        ejb.getAuthors ().add ( rod );
+        ejb.setPublisher (  publisher);
+        publisher.getBooks ().add ( ejb );
 
-        authorRepository.save ( rod );
-        bookRepository.save ( ejb );
-        publisherRepository.save ( publisher );
+                        authorRepository.save ( rod );
+                        bookRepository.save ( ejb );
+                        publisherRepository.save ( publisher );
         System.out.println ("Starting bootStrap  ...... ");
         System.out.println ( "number Of books  :  :: " +bookRepository.count ());
 //        Iterable < Author > allAuthor = authorRepository.findAll ();
