@@ -1,12 +1,10 @@
 package guru.springframework.spring5webapp.domain;
 
-//import java.awt.print.Book;
-//import java.awt.print.Book;
-//import java.awt.print.Book;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
-//test pushing
+
 
 @Entity
 public class Author {
