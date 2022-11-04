@@ -74,7 +74,15 @@ public class Book {
     }
 
 
-
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", publisher=" + publisher +
+                '}';
+    }
 
     @Override
     public boolean equals(Object o) {
