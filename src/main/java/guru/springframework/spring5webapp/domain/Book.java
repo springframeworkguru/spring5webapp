@@ -1,30 +1,33 @@
 package guru.springframework.spring5webapp.domain;
 
-import org.springframework.cache.annotation.EnableCaching;
-
 import javax.persistence.*;
-import java.util.Objects;
+import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Created by jt on 12/22/19.
+ */
 @Entity
 public class Book {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private String title;
     private String isbn;
+
     @ManyToMany
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
-    private Set<Author> authors;
+    private Set<Author> authors = new HashSet<>();
 
     public Book() {
     }
 
-    public Book(String title, String isbn, Set<Author> authors) {
+    public Book(String title, String isbn) {
         this.title = title;
         this.isbn = isbn;
-        this.authors = authors;
     }
 
     public Long getId() {
@@ -76,7 +79,7 @@ public class Book {
 
         Book book = (Book) o;
 
-        return Objects.equals(id, book.id);
+        return id != null ? id.equals(book.id) : book.id == null;
     }
 
     @Override
