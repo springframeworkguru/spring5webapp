@@ -10,5 +10,13 @@ public class HelloController {
 	public String hello() {
 		return "Hello world!!!";
 	}
+	
+
+	@GetMapping("/print")
+	public String print() {
+		return "print msg!!!";
+	}
+	
+	
 
 }
