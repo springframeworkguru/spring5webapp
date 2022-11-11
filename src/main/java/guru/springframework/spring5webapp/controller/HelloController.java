@@ -14,7 +14,7 @@ public class HelloController {
 
 	@GetMapping("/print")
 	public String print() {
-		return "print msg!!!";
+		return "welcome msg!!!";
 	}
 	
 	
