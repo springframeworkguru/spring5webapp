@@ -18,11 +18,9 @@ public class Author {
     public Author() {
     }
 
-    public Author(Long id, String firstName, String lastName, Set<Book> books) {
-        this.id = id;
+    public Author( String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.books = books;
     }
 
     public Long getId() {
@@ -73,11 +71,11 @@ public class Author {
 
         Author author = (Author) o;
 
-        return id.equals(author.id);
+        return id != null ? id.equals(author.id) : author.id == null;
     }
 
     @Override
     public int hashCode() {
-        return id.hashCode();
+        return id != null ? id.hashCode() : 0;
     }
 }
