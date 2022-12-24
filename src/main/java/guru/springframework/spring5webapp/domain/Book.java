@@ -13,7 +13,7 @@ public class Book {
     private String tittle;
     private String isbn;
     private String publisher;
-    @ManyToMany(mappedBy = "books")
+    @ManyToMany
     @JoinTable(name = "author_book",joinColumns = @JoinColumn(name = "book_id"),
     inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors=new HashSet<>();
@@ -21,12 +21,10 @@ public class Book {
     public Book() {
     }
 
-    public Book(Long id, String tittle, String isbn, String publisher, Set<Author> authors) {
-        this.id = id;
+    public Book(String tittle, String isbn, String publisher) {
         this.tittle = tittle;
         this.isbn = isbn;
         this.publisher = publisher;
-        this.authors = authors;
     }
 
     public Long getId() {
@@ -87,11 +85,11 @@ public class Book {
 
         Book book = (Book) o;
 
-        return id.equals(book.id);
+        return id != null ? id.equals(book.id) : book.id == null;
     }
 
     @Override
     public int hashCode() {
-        return id.hashCode();
+        return id != null ? id.hashCode() : 0;
     }
 }
