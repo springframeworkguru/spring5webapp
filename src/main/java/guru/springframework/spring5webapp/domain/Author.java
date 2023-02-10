@@ -2,9 +2,11 @@ package guru.springframework.spring5webapp.domain;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
+/**
+ * Created by jt on 12/22/19.
+ */
 @Entity
 public class Author {
 
@@ -14,16 +16,16 @@ public class Author {
 
     private String firstName;
     private String lastName;
+
     @ManyToMany(mappedBy = "authors")
     private Set<Book> books = new HashSet<>();
 
+    public Author() {
+    }
 
     public Author(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-    }
-
-    public Author() {
     }
 
     public Long getId() {
@@ -41,7 +43,6 @@ public class Author {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
 
     public String getLastName() {
         return lastName;
@@ -76,13 +77,11 @@ public class Author {
 
         Author author = (Author) o;
 
-        return Objects.equals(id, author.id);
+        return id != null ? id.equals(author.id) : author.id == null;
     }
 
     @Override
     public int hashCode() {
         return id != null ? id.hashCode() : 0;
     }
-
-
 }
