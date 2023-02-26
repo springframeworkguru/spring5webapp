@@ -55,6 +55,8 @@ public class Author {
         this.books = books;
     }
 
+
+    // TO STRING FOR JSON TYPE DATA
     @Override
     public String toString() {
         return "Author{" +
