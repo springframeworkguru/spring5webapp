@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Spring Framework Guru</title>
+</head>
+<body>
+
+<h1>Author List</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+  </tr>
+  <tr th:each="author : ${authors}">
+    <td th:text="${author.id}">123</td>
+    <td th:text="${author.firstName}">Joe</td>
+    <td th:text="${author.lastName}">Smith</td>
+  </tr>
+</table>
+
+</body>
+</html>
