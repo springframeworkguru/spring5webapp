@@ -2,6 +2,7 @@ package guru.springframework.spring5webapp.domain;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -13,15 +14,16 @@ public class Author {
     private String firstName;
     private String lastName;
 
-    private Set<Author> authors;
 
     @ManyToMany(mappedBy = "authors")
-    public Set<Author> getAuthors() {
-        return authors;
+    private Set<Book> books =  new HashSet<>();
+
+    public Set<Book> getBooks() {
+        return books;
     }
 
-    public void setAuthors(Set<Author> authors) {
-        this.authors = authors;
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 
     public Long getId() {
@@ -54,7 +56,7 @@ public class Author {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", authors=" + authors +
+                ", books=" + books +
                 '}';
     }
 

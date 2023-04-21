@@ -2,6 +2,7 @@ package guru.springframework.spring5webapp.domain;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -14,16 +15,16 @@ public class Book {
     private String isbn;
 
     @ManyToMany
-    @JoinTable(name= "author book", joinColumns = @JoinColumn(name ="book_id"),
+    @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
-    private Set<Book> books;
+    private Set<Author> authors;
 
-    public Set<Book> getBooks() {
-        return books;
+    public Set<Author> getAuthors() {
+        return authors;
     }
 
-    public void setBooks(Set<Book> books) {
-        this.books = books;
+    public void setAuthors(Set<Author> authors) {
+        this.authors = authors;
     }
 
     public Long getId() {
@@ -51,6 +52,16 @@ public class Book {
     }
 
     @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", authors=" + authors +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -58,16 +69,6 @@ public class Book {
         Book book = (Book) o;
 
         return Objects.equals(id, book.id);
-    }
-
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", isbn='" + isbn + '\'' +
-                ", books=" + books +
-                '}';
     }
 
     @Override
