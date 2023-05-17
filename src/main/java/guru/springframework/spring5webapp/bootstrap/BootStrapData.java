@@ -2,8 +2,10 @@ package guru.springframework.spring5webapp.bootstrap;
 
 import guru.springframework.spring5webapp.model.Author;
 import guru.springframework.spring5webapp.model.Book;
+import guru.springframework.spring5webapp.model.Publisher;
 import guru.springframework.spring5webapp.repository.AuthorRepository;
 import guru.springframework.spring5webapp.repository.BookRepository;
+import guru.springframework.spring5webapp.repository.PublisherRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -13,22 +15,37 @@ public class BootStrapData implements CommandLineRunner {
     private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
 
-    public BootStrapData(AuthorRepository authorRepository, BookRepository bookRepository) {
+    private final PublisherRepository publisherRepository;
+
+    public BootStrapData(AuthorRepository authorRepository, BookRepository bookRepository, PublisherRepository publisherRepository) {
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
+        this.publisherRepository = publisherRepository;
     }
 
 
     @Override
     public void run(String... args) throws Exception {
+
+        Publisher publisher = new Publisher();
+        publisher.setName("P1");
+        publisher.setCity("C1");
+        publisher.setState("S1");
+
+        publisherRepository.save(publisher);
+
         Author eric = new Author("Eric", "Evans");
         Book book = new Book("Book_Title_1", "123456789");
 
         eric.getBooks().add(book);
         book.getAuthors().add(eric);
+        book.setPublisher(publisher);
+        publisher.getBooks().add(book);
+
 
         authorRepository.save(eric);
         bookRepository.save(book);
+        publisherRepository.save(publisher);
 
         //---------------------------
 
@@ -42,5 +59,7 @@ public class BootStrapData implements CommandLineRunner {
         bookRepository.save(book1);
 
         System.out.println("Number of books loaded: "+bookRepository.count());
+        System.out.println("Number of authors loaded: "+authorRepository.count());
+        System.out.println("Number of publisher loaded: "+publisherRepository.count());
     }
 }
