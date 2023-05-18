@@ -42,6 +42,7 @@ public class BootStrapData implements CommandLineRunner {
         book.setPublisher(publisher);
         publisher.getBooks().add(book);
 
+        System.out.println(book.getPublisher().getName());
 
         authorRepository.save(eric);
         bookRepository.save(book);
@@ -49,14 +50,25 @@ public class BootStrapData implements CommandLineRunner {
 
         //---------------------------
 
+        Publisher publisher2 = new Publisher();
+        publisher.setName("P2");
+        publisher.setCity("C2");
+        publisher.setState("S2");
+
+        publisherRepository.save(publisher2);
+
         Author auther1 = new Author("Eric", "Evans");
         Book book1 = new Book("Book_Title_1", "123456789");
 
         auther1.getBooks().add(book1);
         book1.getAuthors().add(auther1);
+        book.setPublisher(publisher2);
+        publisher2.getBooks().add(book1);
+
 
         authorRepository.save(auther1);
         bookRepository.save(book1);
+        publisherRepository.save(publisher2);
 
         System.out.println("Number of books loaded: "+bookRepository.count());
         System.out.println("Number of authors loaded: "+authorRepository.count());
