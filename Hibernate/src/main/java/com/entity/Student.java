@@ -46,4 +46,13 @@ public class Student {
     public void setCity(String city) {
         this.city = city;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", city='" + city + '\'' +
+                '}';
+    }
 }
