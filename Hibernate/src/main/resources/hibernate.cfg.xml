@@ -11,6 +11,7 @@
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hbm2ddl.auto">update</property>
         <property name="show_sql">true</property>
+        <mapping class="com.entity.Student"/>
     </session-factory>
 </hibernate-configuration>
 
