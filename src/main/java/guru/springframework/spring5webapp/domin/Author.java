@@ -56,7 +56,15 @@ public class Author {
     public void setId(Long id) {
         this.id = id;
     }
-
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", books=" + books +
+                '}';
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
