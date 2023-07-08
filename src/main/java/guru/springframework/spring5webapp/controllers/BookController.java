@@ -18,6 +18,6 @@ public class BookController {
     public  String index (Model model)
     {
         model.addAttribute("books",bookRepository.findAll());
-        return "Books";
+        return "books/list";
     }
 }
