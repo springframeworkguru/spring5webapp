@@ -2,16 +2,17 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
     <changeSet author="JT" id="1677335672894-1">
         <createTable tableName="book">
-            <column name="id" type="BIGINT">
-                <constraints nullable="false" primaryKey="true"/>
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" />
             </column>
             <column name="isbn" type="VARCHAR(255)"/>
             <column name="publisher" type="VARCHAR(255)"/>
             <column name="title" type="VARCHAR(255)"/>
+            <column name="author_id" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
     <changeSet author="JT" id="1677335672894-2">
-        <createTable tableName="book_id_seq">
+        <createTable tableName="hibernate_sequence">
             <column name="next_val" type="BIGINT"/>
         </createTable>
     </changeSet>

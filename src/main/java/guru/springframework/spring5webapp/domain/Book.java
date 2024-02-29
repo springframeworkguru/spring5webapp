@@ -1,8 +1,9 @@
 package guru.springframework.spring5webapp.domain;
 
+import jakarta.persistence.Entity;
 import lombok.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Data
 @AllArgsConstructor
@@ -11,15 +12,16 @@ import javax.persistence.*;
 @Entity
 @Table
 @Builder
+@NamedQueries({
+        @NamedQuery(name = "Book.getById", query = "SELECT b FROM Book b WHERE b.id = :id")
+})
 public class Book {
     @Id
-    @SequenceGenerator(name = "pk_book_id", sequenceName = "book_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_book_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String title;
     private String isbn;
     private String publisher;
     private Long authorId;
-
 }
