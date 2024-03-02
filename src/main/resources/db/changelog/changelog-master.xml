@@ -8,4 +8,6 @@
     <include file="/db/changelog/init-hibernate-changelog.xml"/>
     <include file="/db/changelog/add-author.xml"/>
     <include file="/db/changelog/add-data.xml"/>
+    <include file="/db/changelog/add-empadable-dateRange.xml"/>
+    <include file="/db/changelog/add-enum.xml"/>
 </databaseChangeLog>

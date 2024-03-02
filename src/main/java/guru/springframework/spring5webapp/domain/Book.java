@@ -1,5 +1,6 @@
 package guru.springframework.spring5webapp.domain;
 
+import guru.springframework.spring5webapp.ResultConverter;
 import jakarta.persistence.Entity;
 import lombok.*;
 
@@ -24,4 +25,13 @@ public class Book {
     private String isbn;
     private String publisher;
     private Long authorId;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "startDate", column = @Column(name = "start_date")),
+            @AttributeOverride(name = "endDate", column = @Column(name = "end_date"))
+    })
+    private DateRange dateRange;
+
+    @Convert(converter = ResultConverter.class)
+    Result result;
 }

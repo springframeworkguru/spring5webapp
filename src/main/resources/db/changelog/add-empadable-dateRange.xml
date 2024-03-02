@@ -1,0 +1,20 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="JT" id="1677335672894-999">
+        <addColumn tableName="book">
+            <column name="start_date" type="date"/>
+            <column name="end_date" type="date"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="8" author="yourname">
+        <sql>insert into book (isbn, publisher, title, author_id, start_date, end_date)
+             values ('978-0134494166', 'Addison Wesley',
+                     'Clean Code', (select id from author where first_name = 'Robert' and last_name = 'Martin'),
+                     "2024-02-20", "2024-02-20");</sql>
+    </changeSet>
+
+</databaseChangeLog>
