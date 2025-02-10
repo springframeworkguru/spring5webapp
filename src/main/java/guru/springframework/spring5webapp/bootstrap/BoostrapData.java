@@ -25,29 +25,53 @@ public class BoostrapData implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Author eric = new Author("Eric", "Evans");
-        Book ddd = new Book("Domain Driven Design", "123123");
-        Publisher roundHouse = new Publisher("Round House","415 E Leslie","Salt Lake City","UT","84115");
+        System.out.println("Started in Bootstrap");
+
+        Publisher roundHouse = new Publisher();
+        roundHouse.setPublisherName("Round House");
+        roundHouse.setAddressLine1("415 E Leslie");
+        roundHouse.setCity("Salt Lake City");
+        roundHouse.setState("UT");
+        roundHouse.setZip("84115");
+
         publisherRepository.save(roundHouse);
 
+        Author eric = new Author();
+        eric.setFirstName("Eric");
+        eric.setLastName("Evans");
+
+        Book ddd = new Book();
+        ddd.setTitle("Domain Driven Design");
+        ddd.setPublisher(roundHouse);
+
+        // Set bidirectional relationships
         eric.getBooks().add(ddd);
         ddd.getAuthors().add(eric);
-        roundHouse.getPublishBooks().add(ddd);
+        roundHouse.getBooks().add(ddd);
 
+        // Save entities
         authorRepository.save(eric);
         bookRepository.save(ddd);
 
-        Author rod = new Author("Rod", "Johnson");
-        Book noEJB = new Book("J2EE Development without EJB", "3939459459");
+        Author rod = new Author();
+        rod.setFirstName("Rod");
+        rod.setLastName("Johnson");
+
+        Book noEJB = new Book();
+        noEJB.setTitle("J2EE Development without EJB");
+        noEJB.setPublisher(roundHouse);
+
+        // Set bidirectional relationships
         rod.getBooks().add(noEJB);
         noEJB.getAuthors().add(rod);
-        roundHouse.getPublishBooks().add(noEJB);
+        roundHouse.getBooks().add(noEJB);
 
+        // Save entities
         authorRepository.save(rod);
         bookRepository.save(noEJB);
 
-
-        System.out.println("Started in Bootstrap");
         System.out.println("Number of Books: " + bookRepository.count());
+        System.out.println("Number of Authors: " + authorRepository.count());
+        System.out.println("Number of Publishers: " + publisherRepository.count());
     }
 }

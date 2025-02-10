@@ -18,7 +18,7 @@ public class Publisher {
     private String zip;
 
     @OneToMany(mappedBy = "publisher", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Book> publishBooks = new HashSet<>();
+    private Set<Book> books = new HashSet<>();
 
     public Publisher(){}
 
@@ -78,12 +78,12 @@ public class Publisher {
         this.zip = zip;
     }
 
-    public Set<Book> getPublishBooks() {
-        return publishBooks;
+    public Set<Book> getBooks() {
+        return books;
     }
 
-    public void setPublishBooks(Set<Book> books) {
-        this.publishBooks = books;
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 
     @Override
