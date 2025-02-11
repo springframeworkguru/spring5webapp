@@ -43,6 +43,7 @@ public class BoostrapData implements CommandLineRunner {
         Book ddd = new Book();
         ddd.setTitle("Domain Driven Design");
         ddd.setPublisher(roundHouse);
+        ddd.setIsbn("789C-123D");
 
         // Set bidirectional relationships
         eric.getBooks().add(ddd);
@@ -60,6 +61,7 @@ public class BoostrapData implements CommandLineRunner {
         Book noEJB = new Book();
         noEJB.setTitle("J2EE Development without EJB");
         noEJB.setPublisher(roundHouse);
+        noEJB.setIsbn("123A-456B");
 
         // Set bidirectional relationships
         rod.getBooks().add(noEJB);
@@ -73,5 +75,6 @@ public class BoostrapData implements CommandLineRunner {
         System.out.println("Number of Books: " + bookRepository.count());
         System.out.println("Number of Authors: " + authorRepository.count());
         System.out.println("Number of Publishers: " + publisherRepository.count());
+        System.out.println("Number of books for publisher: " + roundHouse.getBooks().size());
     }
 }
